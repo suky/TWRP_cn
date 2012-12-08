@@ -43,13 +43,13 @@ for i in range(len(ch)):
 	cheight += pack("B",height)
 	data += im.tostring()
 	if yes == "y":
-		if not os.path.isdir(".\preview"):
-			os.makedirs(".\preview")
+		if not os.path.isdir(".%spreview"%os.sep):
+			os.makedirs(".%spreview"%os.sep)
 		try:
-			im.save(".\preview\%s.png"%ch[i])
+			im.save(".%spreview%s%s.png"%(os.sep,os.sep,ch[i]))
 		except:
 			print ("特殊字符(%s)无法保存,另存为p_%d.png"%(ch[i].encode("utf8"),i)).decode("utf8")
-			im.save(".\preview\p_%d.png"%i)
+			im.save(".%spreview%sp_%d.png"%(os.sep,os.sep,i))
 
 g = gzip.GzipFile(filename=r'font.dat', mode='wb', compresslevel=9)
 g.write(pack("I",len(ch)))

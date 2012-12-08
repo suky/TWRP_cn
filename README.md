@@ -4,7 +4,7 @@
 
 增加扩展字库,可扩展单个字符,扩展字库中不存在的使用内置字库(参考了syhost的代码,感谢[syhost](https://github.com/syhost))
 
-扩展字库可由minuitwrp/font\_dat\_gen.py生成,只要把需要的字符放到UTF8.txt中以utf8编码保存即可
+扩展字库可由minuitwrp/font\_dat\_gen.py生成(附上[exe程序](https://github.com/downloads/suky/TWRP_cn/font_dat_gen.exe)),只要把需要的字符放到文本文件中以utf8编码保存即可
 
 需要注意的是官方的扩展字库会覆盖.h字库里面的英文,造成中英文显示不协调,只需要移除gui/devices/\*/fonts/\*.dat或替换为自行生成的扩展字库即可
 
