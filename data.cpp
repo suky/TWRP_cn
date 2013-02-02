@@ -926,12 +926,16 @@ int DataManager::GetMagicValue(const string varName, string& value)
 		if (curTime.tv_sec > nextSecCheck)
 		{
 			char cap_s[4];
+#ifdef TW_CUSTOM_BATTERY_CAPACITY
+			FILE * cap = fopen(TW_CUSTOM_BATTERY_CAPACITY,"rt");
+#else
 #ifdef TW_CUSTOM_BATTERY_PATH
 			string capacity_file = EXPAND(TW_CUSTOM_BATTERY_PATH);
 			capacity_file += "/capacity";
 			FILE * cap = fopen(capacity_file.c_str(),"rt");
 #else
 			FILE * cap = fopen("/sys/class/power_supply/battery/capacity","rt");
+#endif
 #endif
 			if (cap){
 				fgets(cap_s, 4, cap);
