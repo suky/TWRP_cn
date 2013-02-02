@@ -104,7 +104,11 @@ int TWPartitionManager::Write_Fstab(void) {
 	}
 	for (iter = Partitions.begin(); iter != Partitions.end(); iter++) {
 		if ((*iter)->Can_Be_Mounted) {
-			Line = (*iter)->Actual_Block_Device + " " + (*iter)->Mount_Point + " " + (*iter)->Current_File_System + " rw\n";
+			if ((*iter)->Current_File_System == "vfat") {
+				Line = (*iter)->Actual_Block_Device + " " + (*iter)->Mount_Point + " " + (*iter)->Current_File_System + " rw,utf8\n";
+			} else {
+				Line = (*iter)->Actual_Block_Device + " " + (*iter)->Mount_Point + " " + (*iter)->Current_File_System + " rw\n";
+			}
 			fputs(Line.c_str(), fp);
 			// Handle subpartition tracking
 			if ((*iter)->Is_SubPartition) {

@@ -736,11 +736,11 @@ bool TWPartition::Mount(bool Display_Error) {
 			return false;
 		} else
 			return true;
-	} else if (!exfat_mounted && mount(Actual_Block_Device.c_str(), Mount_Point.c_str(), Current_File_System.c_str(), 0, NULL) != 0) {
+	} else if (!exfat_mounted && mount(Actual_Block_Device.c_str(), Mount_Point.c_str(), "vfat", 0, "utf8") != 0 && mount(Actual_Block_Device.c_str(), Mount_Point.c_str(), Current_File_System.c_str(), 0, NULL) != 0) {
 #ifdef TW_NO_EXFAT_FUSE
 		if (Current_File_System == "exfat") {
 			LOGI("Mounting exfat failed, trying vfat...\n");
-			if (mount(Actual_Block_Device.c_str(), Mount_Point.c_str(), "vfat", 0, NULL) != 0) {
+			if (mount(Actual_Block_Device.c_str(), Mount_Point.c_str(), "vfat", 0, "utf8") != 0) {
 				if (Display_Error)
 					LOGE("Unable to mount '%s'\n", Mount_Point.c_str());
 				else
