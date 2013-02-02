@@ -567,6 +567,9 @@ static int vk_modify(struct ev *e, struct input_event *ev)
     // On first touch, see if we're at a virtual key
     if (downX == -1)
     {
+#ifdef TW_TOUCH_VIBRATOR
+		vibrate(TW_VIBRATOR_TIME_MS);
+#else
         // Attempt mapping to virtual key
         for (i = 0; i < e->vk_count; ++i)
         {
@@ -588,6 +591,7 @@ static int vk_modify(struct ev *e, struct input_event *ev)
                 return 0;
             }
         }
+#endif
     }
 
     // If we were originally a button press, discard this event
