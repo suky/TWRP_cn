@@ -6,6 +6,7 @@ LOCAL_SRC_FILES := \
     resources.cpp \
     pages.cpp \
     text.cpp \
+    languages.cpp \
     image.cpp \
     action.cpp \
     console.cpp \
@@ -73,6 +74,7 @@ $(TWRP_RES_GEN):
 	mkdir -p $(TARGET_RECOVERY_ROOT_OUT)/res/
 	cp -fr $(TWRP_RES_LOC)/common/res/* $(TARGET_RECOVERY_ROOT_OUT)/res/
 	cp -fr $(TWRP_RES_LOC)/$(DEVICE_RESOLUTION)/res/* $(TARGET_RECOVERY_ROOT_OUT)/res/
+	$(TWRP_RES_LOC)/sed.sh $(TWRP_RES_LOC)/list.xml $(TARGET_RECOVERY_ROOT_OUT)/res/ui.xml $(TARGET_RECOVERY_ROOT_OUT)/res/languages.xml
 	mkdir -p $(TARGET_RECOVERY_ROOT_OUT)/sbin/
 	ln -sf /sbin/busybox $(TARGET_RECOVERY_ROOT_OUT)/sbin/sh
 	ln -sf /sbin/pigz $(TARGET_RECOVERY_ROOT_OUT)/sbin/gzip

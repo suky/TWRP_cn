@@ -883,6 +883,8 @@ void DataManager::SetDefaultValues()
 	}
 #endif
 	mValues.insert(make_pair(TW_MILITARY_TIME, make_pair("0", 0)));
+
+	mValues.insert(make_pair("tw_lang_name", make_pair("en", 1)));
 }
 
 // Magic Values

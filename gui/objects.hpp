@@ -17,6 +17,7 @@ using namespace rapidxml;
 #include "../data.hpp"
 #include "resources.hpp"
 #include "pages.hpp"
+#include "languages.hpp"
 
 class RenderObject
 {
