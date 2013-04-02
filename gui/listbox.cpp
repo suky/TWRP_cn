@@ -764,7 +764,9 @@ int GUIListBox::NotifyVarChange(std::string varName, std::string value)
 
 		if (selected_index > mStart + lines - 1)
 			mStart = selected_index;
-		if (mStart > listSize - lines) {
+		if (listSize - lines < 0) {
+			mStart = 0;
+		} else if (mStart > listSize - lines) {
 			mStart = listSize - lines;
 		} else if (selected_index < mStart) {
 			mStart = selected_index;
