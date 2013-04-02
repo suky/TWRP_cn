@@ -39,11 +39,13 @@ int twgr_text(int x, int y, const char *s);
 static inline int gr_text(int x, int y, const char *s)     { return gr_textEx(x, y, s, NULL); }
 int gr_measureEx(const char *s, void* font);
 static inline int gr_measure(const char *s)                { return gr_measureEx(s, NULL); }
+int getCharID(const char* s, void* pFont);
 
 int gr_getFontDetails(void* font, unsigned* cheight, unsigned* maxwidth);
 static inline void gr_font_size(int *x, int *y)            { gr_getFontDetails(NULL, (unsigned*) y, (unsigned*) x); }
 
 void* gr_loadFont(const char* fontName);
+void* gr_loadFont_cn(const char* fontName);
 
 void gr_blit(gr_surface source, int sx, int sy, int w, int h, int dx, int dy);
 unsigned int gr_get_width(gr_surface surface);
